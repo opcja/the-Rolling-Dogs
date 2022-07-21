@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/assets/images/icon.png",
+        icon: "src/assets/icons/favicon.svg",
       },
     },
     "gatsby-plugin-sharp",
@@ -54,6 +54,14 @@ module.exports = {
         fonts: [`playfair display\:400,600,700,900`, `lora\:400`],
       },
       display: "swap",
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/, // See below to configure properly
+        },
+      },
     },
   ],
 };
