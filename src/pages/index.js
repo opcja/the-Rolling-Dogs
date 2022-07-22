@@ -5,12 +5,19 @@ import { Navigation } from "../components/Navigation/Navigation";
 
 const Title = styled.h1``;
 
+const Dupa = styled.div`
+  height: 600px;
+  color: red;
+`;
+
 // markup
 const IndexPage = () => {
   return (
     <MainTemplate>
       <Navigation></Navigation>
-      <Title>the Rolling Dogs</Title>
+      <Dupa>
+        <Title>the Rolling Dogs</Title>
+      </Dupa>
     </MainTemplate>
   );
 };

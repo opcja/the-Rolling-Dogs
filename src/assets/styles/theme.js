@@ -1,6 +1,9 @@
 export const theme = {
   colors: {
     yellow100: "#F5F2E2",
+    yellow200: "#F2EDD8",
+    yellow300: "#EFE9CE",
+    yellow400: "#D6CEAC",
     orange100: "#F8D7BE",
     orange200: "#F6C9A8",
     orange300: "#F2AF7D",
