@@ -4,6 +4,8 @@ import MainTemplate from "../templates/MainTemplates";
 import { Navigation } from "../components/Navigation/Navigation";
 import { StaticImage } from "gatsby-plugin-image";
 import { Button } from "../components/Button/Button";
+import BlogIcon from "../assets/icons/about-2.svg";
+import { Articles } from "../components/Articles/Articles";
 
 const Title = styled.h1`
   font-family: "Playfair Display", serif;
@@ -40,7 +42,6 @@ const AboutSection = styled.section`
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
-  height: 1500px;
 
   h3 {
     margin-top: 20px;
@@ -58,6 +59,40 @@ const AboutSection = styled.section`
 
   button {
     margin-top: 80px;
+  }
+`;
+
+const BlogSection = styled.section`
+  margin-top: 100px;
+  padding: 0 16px;
+  height: 1000px;
+  position: relative;
+
+  h2 {
+    font-family: "Playfair Display", serif;
+    font-size: ${({ theme }) => theme.font.size.mobile.h3};
+    color: ${({ theme }) => theme.colors.green300};
+    font-weight: 800;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.green300};
+    margin-top: 10px;
+  }
+
+  div {
+    position: absolute;
+    right: 22px;
+    top: 6px;
+
+    svg {
+      width: 72px;
+      height: 57px;
+    }
   }
 `;
 
@@ -99,6 +134,13 @@ const IndexPage = () => {
         </p>
         <Button>Więcej o mnie</Button>
       </AboutSection>
+      <BlogSection>
+        <h2>Blog</h2>
+        <div>
+          <BlogIcon />
+        </div>
+        <Articles></Articles>
+      </BlogSection>
     </MainTemplate>
   );
 };

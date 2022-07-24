@@ -86,7 +86,7 @@ const StyledBurger = styled.button`
 `;
 
 const NavMenu = styled.nav`
-  position: ${({ isOpen }) => (isOpen ? "absolute" : "fixed")};
+  position: fixed;
   z-index: 990;
   top: 50px;
   width: 100%;
