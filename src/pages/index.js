@@ -29,6 +29,10 @@ const Title = styled.h1`
 const Header = styled.header`
   height: calc(100vh - 50px);
   position: relative;
+
+  div.gatsby-image-wrapper {
+    height: 100%;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -57,7 +61,7 @@ const AboutSection = styled.section`
     margin-top: 60px;
   }
 
-  button {
+  a {
     margin-top: 80px;
   }
 `;
@@ -82,17 +86,18 @@ const BlogSection = styled.section`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.green300};
     margin-top: 10px;
+    margin-bottom: 60px;
   }
+`;
 
-  div {
-    position: absolute;
-    right: 22px;
-    top: 6px;
+const BlogIconWrapper = styled.div`
+  position: absolute;
+  right: 22px;
+  top: 6px;
 
-    svg {
-      width: 72px;
-      height: 57px;
-    }
+  svg {
+    width: 72px;
+    height: 57px;
   }
 `;
 
@@ -112,9 +117,7 @@ const IndexPage = () => {
             Pozwól psu być psem
             <p>Treningi i konsultacje behawioralne</p>
           </Title>
-          <Button as="a" href="/">
-            Sprawdź ofertę
-          </Button>
+          <Button as="a" href="/" variant="primary" text="Sprawdź ofertę" />
         </ContentWrapper>
       </Header>
       <AboutSection>
@@ -132,13 +135,13 @@ const IndexPage = () => {
           opiekun stworzył z psiakiem relacje opartą na zaufaniu i partnerstwie.
           Jeśli mamy to, wtedy nauka to pikuś.{" "}
         </p>
-        <Button>Więcej o mnie</Button>
+        <Button as="a" href="/" variant="primary" text="Czytaj więcej" />
       </AboutSection>
       <BlogSection>
         <h2>Blog</h2>
-        <div>
+        <BlogIconWrapper>
           <BlogIcon />
-        </div>
+        </BlogIconWrapper>
         <Articles></Articles>
       </BlogSection>
     </MainTemplate>
