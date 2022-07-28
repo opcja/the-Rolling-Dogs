@@ -103,14 +103,19 @@ export const NewsletterSectionComponent = () => {
         nowych wpisach oraz promocjach na nasze szkolenia.
       </p>
       <FormWrapper>
-        <form>
+        <form
+          name="newsletter"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
           <div>
             <PersonIcon />
-            <input type="text" placeholder="Imię" />
+            <input type="text" placeholder="Imię" name="newsletter" />
           </div>
           <div>
             <MailIcon />
-            <input type="email" placeholder="Adres email" />
+            <input type="email" placeholder="Adres email" name="newsletter" />
           </div>
           <Button type="submit" text="Zapisz się" variant="primary" />
           <span>
