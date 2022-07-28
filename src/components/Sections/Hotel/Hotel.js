@@ -41,7 +41,7 @@ export const HotelSectionComponent = () => {
   return (
     <HotelSection>
       <StaticImage
-        src="../assets/images/homepage/mobile/hotel.png"
+        src="../../../assets/images/homepage/mobile/hotel.png"
         alt=""
         placeholder="blurred"
       />
