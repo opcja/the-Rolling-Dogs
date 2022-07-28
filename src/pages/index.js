@@ -11,6 +11,9 @@ import TreningsIcon from "../assets/icons/trenings.svg";
 import TherapyIcon from "../assets/icons/therapy.svg";
 import OnlineIcon from "../assets/icons/online.svg";
 
+import { HotelSectionComponent } from "../components/Sections/Hotel/Hotel";
+import { NewsletterSectionComponent } from "../components/Sections/Newsletter/Newsletter";
+
 const Title = styled.h1`
   font-family: "Playfair Display", serif;
   font-size: ${({ theme }) => theme.font.size.mobile.h2};
@@ -107,7 +110,7 @@ const BlogIconWrapper = styled.div`
 
 const OfferSection = styled.section`
   background-color: ${({ theme }) => theme.colors.green400};
-  padding: 40px 16px 0;
+  padding: 40px 16px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -239,6 +242,8 @@ const IndexPage = () => {
         </ul>
         <Button as="a" href="/" variant="primary" text="Przejdź do oferty" />
       </OfferSection>
+      <HotelSectionComponent></HotelSectionComponent>
+      <NewsletterSectionComponent></NewsletterSectionComponent>
     </MainTemplate>
   );
 };
