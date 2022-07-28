@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { Button } from "../../Button/Button";
@@ -41,7 +41,7 @@ export const HotelSectionComponent = () => {
   return (
     <HotelSection>
       <StaticImage
-        src="../assets/images/homepage/mobile/hotel.png"
+        src="../../../assets/images/homepage/mobile/hotel.png"
         alt=""
         placeholder="blurred"
       />

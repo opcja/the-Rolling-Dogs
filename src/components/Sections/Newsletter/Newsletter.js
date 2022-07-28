@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { Button } from "../../Button/Button";
@@ -111,11 +111,11 @@ export const NewsletterSectionComponent = () => {
         >
           <div>
             <PersonIcon />
-            <input type="text" placeholder="Imię" name="newsletter" />
+            <input type="text" placeholder="Imię" name="name" />
           </div>
           <div>
             <MailIcon />
-            <input type="email" placeholder="Adres email" name="newsletter" />
+            <input type="email" placeholder="Adres email" name="email" />
           </div>
           <Button type="submit" text="Zapisz się" variant="primary" />
           <span>
