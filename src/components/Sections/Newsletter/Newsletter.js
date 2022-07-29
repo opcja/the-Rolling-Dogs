@@ -104,13 +104,13 @@ export const NewsletterSectionComponent = () => {
         nowych wpisach oraz promocjach na nasze szkolenia.
       </p>
       <FormWrapper>
-        <form
+        {/* <form
           name="newsletter"
-          method="post"
+          method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="form-name" />
+          <input type="hidden" name="form-name" value="newsletter" />
           <input type="hidden" name="bot-field" />
 
           <div>
@@ -128,6 +128,18 @@ export const NewsletterSectionComponent = () => {
             od strefabezdiety.com. W każdej chwili możesz wypisać się z listy
             subskrybentów.
           </span>
+        </form> */}
+        <form name="Contact Form" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="Contact Form" />
+          <div>
+            <label>Your Email:</label>
+            <input type="email" name="email" />
+          </div>
+          <div>
+            <label>Message:</label>
+            <textarea name="message" />
+          </div>
+          <button type="submit">Send</button>
         </form>
       </FormWrapper>
     </NewsletterSection>
