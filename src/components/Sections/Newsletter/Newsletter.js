@@ -111,6 +111,7 @@ export const NewsletterSectionComponent = () => {
           data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" />
+          <input type="hidden" name="bot-field" />
 
           <div>
             <PersonIcon />

@@ -46,9 +46,9 @@ export const StyledButton = styled.button`
   }}
 `;
 
-export const Button = ({ variant, text, as, href }) => {
+export const Button = ({ variant, text, as, href, type }) => {
   return (
-    <StyledButton as={as} href={href} variant={variant}>
+    <StyledButton as={as} href={href} variant={variant} type={type}>
       {text}
       {variant === "secondary" ? <div></div> : null}
     </StyledButton>
