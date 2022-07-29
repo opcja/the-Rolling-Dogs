@@ -62,6 +62,7 @@ const FormWrapper = styled.div`
         font-family: "Lora", serif;
         letter-spacing: 0.04em;
         color: ${({ theme }) => theme.colors.black500};
+        background-color: ${({ theme }) => theme.colors.yellow100};
 
         &:focus {
           outline: none;
@@ -109,6 +110,8 @@ export const NewsletterSectionComponent = () => {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="form-name" />
+
           <div>
             <PersonIcon />
             <input type="text" placeholder="Imię" name="name" />

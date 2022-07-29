@@ -56,7 +56,7 @@ export const HotelSectionComponent = () => {
           Jeśli musisz zostawić pupila na jakiś czas, pozwól zaopiekować się nim
           profesjonaliście.
         </p>
-        <Button as="a" href="/" variant="primary" text="Sprawdź ofertę" />
+        <Button as="a" href="/" variant="secondary" text="Czytaj więcej" />
       </TextAndButton>
     </HotelSection>
   );
