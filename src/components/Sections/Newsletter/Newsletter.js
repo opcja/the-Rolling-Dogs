@@ -132,14 +132,18 @@ export const NewsletterSectionComponent = () => {
         <form name="Contact Form" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="Contact Form" />
           <div>
-            <label>Your Email:</label>
-            <input type="email" name="email" />
+            <label>
+              <PersonIcon />
+            </label>
+            <input type="text" name="name" />
           </div>
           <div>
-            <label>Message:</label>
-            <textarea name="message" />
+            <label>
+              <MailIcon />
+            </label>
+            <input type="email" name="email" />
           </div>
-          <button type="submit">Send</button>
+          <Button type="submit" text="Zapisz się" variant="primary" />
         </form>
       </FormWrapper>
     </NewsletterSection>
