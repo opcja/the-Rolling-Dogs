@@ -8,6 +8,7 @@ import MailIcon from "../../../assets/icons/mail-icon.svg";
 
 const NewsletterSection = styled.section`
   position: relative;
+  margin-bottom: 60px;
 
   h2 {
     width: 100%;
@@ -75,7 +76,6 @@ const FormWrapper = styled.div`
     }
 
     span {
-      font-size: ${({ theme }) => theme.font.size.mobile.caption};
       color: ${({ theme }) => theme.colors.black500};
       font-family: "Lora", serif;
       font-size: 12px;
@@ -104,22 +104,19 @@ export const NewsletterSectionComponent = () => {
         nowych wpisach oraz promocjach na nasze szkolenia.
       </p>
       <FormWrapper>
-        {/* <form
-          name="newsletter"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="newsletter" />
-          <input type="hidden" name="bot-field" />
-
+        <form name="Contact Form" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="Contact Form" />
           <div>
-            <PersonIcon />
-            <input type="text" placeholder="Imię" name="name" />
+            <label>
+              <PersonIcon />
+            </label>
+            <input type="text" name="name" placeholder="Imię" />
           </div>
           <div>
-            <MailIcon />
-            <input type="email" placeholder="Adres email" name="email" />
+            <label>
+              <MailIcon />
+            </label>
+            <input type="email" name="email" placeholder="Adres email" />
           </div>
           <Button type="submit" text="Zapisz się" variant="primary" />
           <span>
@@ -128,22 +125,6 @@ export const NewsletterSectionComponent = () => {
             od strefabezdiety.com. W każdej chwili możesz wypisać się z listy
             subskrybentów.
           </span>
-        </form> */}
-        <form name="Contact Form" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="Contact Form" />
-          <div>
-            <label>
-              <PersonIcon />
-            </label>
-            <input type="text" name="name" />
-          </div>
-          <div>
-            <label>
-              <MailIcon />
-            </label>
-            <input type="email" name="email" />
-          </div>
-          <Button type="submit" text="Zapisz się" variant="primary" />
         </form>
       </FormWrapper>
     </NewsletterSection>

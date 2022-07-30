@@ -25,4 +25,8 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  span {
+    font-family: 'Lora', serif;
+  }
 `;

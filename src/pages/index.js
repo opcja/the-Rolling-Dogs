@@ -13,6 +13,7 @@ import OnlineIcon from "../assets/icons/online.svg";
 
 import { HotelSectionComponent } from "../components/Sections/Hotel/Hotel";
 import { NewsletterSectionComponent } from "../components/Sections/Newsletter/Newsletter";
+import { FooterComponent } from "../components/Footer/Footer";
 
 const Title = styled.h1`
   font-family: "Playfair Display", serif;
@@ -244,6 +245,7 @@ const IndexPage = () => {
       </OfferSection>
       <HotelSectionComponent></HotelSectionComponent>
       <NewsletterSectionComponent></NewsletterSectionComponent>
+      <FooterComponent></FooterComponent>
     </MainTemplate>
   );
 };
