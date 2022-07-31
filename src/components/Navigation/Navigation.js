@@ -102,6 +102,10 @@ const NavMenu = styled.nav`
     color: ${({ theme }) => theme.colors.yellow300};
     line-height: 100%;
   }
+
+  a.active {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.yellow300};
+  }
 `;
 
 const MenuList = styled.ul`
@@ -191,33 +195,51 @@ export const Navigation = () => {
         <MenuList>
           <li>
             {" "}
-            <Link to="/">Home</Link>
+            <Link to="/" activeClassName="active">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/">O mnie</Link>
+            <Link to="/" activeClassName="active">
+              O mnie
+            </Link>
           </li>
           <li>
-            <Link to="/">Oferta</Link>
+            <Link to="/" activeClassName="active">
+              Oferta
+            </Link>
           </li>
           <li>
-            <Link to="/">Blog</Link>
+            <Link to="/blog" activeClassName="active">
+              Blog
+            </Link>
             <BlogCategoriesList>
               <li>
-                <Link to="/">#szkolenia</Link>
+                <Link to="/" activeClassName="active">
+                  #szkolenia
+                </Link>
               </li>
               <li>
-                <Link to="/">#psie potrzeby</Link>
+                <Link to="/" activeClassName="active">
+                  #psie potrzeby
+                </Link>
               </li>
               <li>
-                <Link to="/">#trening</Link>
+                <Link to="/" activeClassName="active">
+                  #trening
+                </Link>
               </li>
               <li>
-                <Link to="/">#psi hotel</Link>
+                <Link to="/" activeClassName="active">
+                  #psi hotel
+                </Link>
               </li>
             </BlogCategoriesList>
           </li>
           <li>
-            <Link to="/">Kontakt</Link>
+            <Link to="/" activeClassName="active">
+              Kontakt
+            </Link>
           </li>
         </MenuList>
         <SocialIcon>

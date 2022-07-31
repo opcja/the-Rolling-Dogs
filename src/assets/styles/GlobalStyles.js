@@ -26,7 +26,5 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  span {
-    font-family: 'Lora', serif;
-  }
+ 
 `;

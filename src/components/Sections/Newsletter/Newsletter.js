@@ -78,7 +78,7 @@ const FormWrapper = styled.div`
     span {
       color: ${({ theme }) => theme.colors.black500};
       font-family: "Lora", serif;
-      font-size: 12px;
+      font-size: 11px;
       text-align: center;
       letter-spacing: 0.04em;
       line-height: 140%;
@@ -86,7 +86,7 @@ const FormWrapper = styled.div`
   }
 `;
 
-export const NewsletterSectionComponent = () => {
+export const NewsletterSectionComponent = ({ children }) => {
   return (
     <NewsletterSection>
       <StaticImage
@@ -127,6 +127,7 @@ export const NewsletterSectionComponent = () => {
           </span>
         </form>
       </FormWrapper>
+      {children}
     </NewsletterSection>
   );
 };

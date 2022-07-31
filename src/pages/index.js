@@ -10,6 +10,7 @@ import BlogIcon from "../assets/icons/about-2.svg";
 import TreningsIcon from "../assets/icons/trenings.svg";
 import TherapyIcon from "../assets/icons/therapy.svg";
 import OnlineIcon from "../assets/icons/online.svg";
+import WalkingDogIcon from "../assets/icons/walking-dog.svg";
 
 import { HotelSectionComponent } from "../components/Sections/Hotel/Hotel";
 import { NewsletterSectionComponent } from "../components/Sections/Newsletter/Newsletter";
@@ -54,6 +55,7 @@ const AboutSection = styled.section`
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
+  padding: 0 16px;
 
   h3 {
     margin-top: 20px;
@@ -165,6 +167,18 @@ const OfferSection = styled.section`
   }
 `;
 
+const WlakingDogIconWrapper = styled.div`
+  position: absolute;
+  right: 22px;
+  bottom: -61px;
+  transform: scaleX(-1);
+
+  /* svg {
+    width: 72px;
+    height: 57px;
+  } */
+`;
+
 // markup
 const IndexPage = () => {
   return (
@@ -244,7 +258,11 @@ const IndexPage = () => {
         <Button as="a" href="/" variant="primary" text="Przejdź do oferty" />
       </OfferSection>
       <HotelSectionComponent></HotelSectionComponent>
-      <NewsletterSectionComponent></NewsletterSectionComponent>
+      <NewsletterSectionComponent>
+        <WlakingDogIconWrapper>
+          <WalkingDogIcon />
+        </WlakingDogIconWrapper>
+      </NewsletterSectionComponent>
       <FooterComponent></FooterComponent>
     </MainTemplate>
   );

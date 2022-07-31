@@ -46,7 +46,6 @@ const LinksWrapper = styled.div`
       &::after {
         content: "";
         display: block;
-        width: 100%;
         height: 1px;
         background-color: ${({ theme }) => theme.colors.orange400};
         margin-top: 4px;
@@ -75,6 +74,7 @@ const CopyAndPolicy = styled.div`
 
   span,
   a {
+    font-family: "Lora", serif;
     color: ${({ theme }) => theme.colors.orange400};
     font-size: ${({ theme }) => theme.font.size.mobile.caption};
     line-height: 160%;
@@ -89,13 +89,13 @@ export const FooterComponent = () => {
       <LinksWrapper>
         <ul>
           <li>
-            <Link>Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link>O mnie</Link>
           </li>
           <li>
-            <Link>Blog</Link>
+            <Link to="/blog">Blog</Link>
           </li>
           <li>
             <Link>Oferta</Link>
