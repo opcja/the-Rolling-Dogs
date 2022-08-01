@@ -3,10 +3,12 @@ import styled from "styled-components";
 import MainTemplate from "../templates/MainTemplates";
 import { Navigation } from "../components/Navigation/Navigation";
 import { StaticImage } from "gatsby-plugin-image";
-import { Button } from "../components/Button/Button";
+
 import { Articles } from "../components/Articles/Articles";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { FooterComponent } from "../components/Footer/Footer";
+
+import LyingDogIcon from "../assets/icons/lying-dog2.svg";
 
 const tagsList = [];
 
@@ -21,11 +23,12 @@ const Header = styled.header`
   h1 {
     position: absolute;
     top: 18%;
+    bottom: 18%;
     left: 12px;
     right: 12px;
     display: flex;
     flex-direction: column;
-    gap: 360px;
+    justify-content: space-between;
     text-align: center;
     font-family: "Playfair Display", serif;
     font-size: ${({ theme }) => theme.font.size.mobile.h3};
@@ -44,6 +47,7 @@ const Header = styled.header`
 const ContentWrapper = styled.section`
   margin: 60px 0 80px;
   padding: 0 16px;
+  position: relative;
 
   h1 {
     font-family: "Playfair Display", serif;
@@ -95,8 +99,13 @@ const CategoriesWrapper = styled.ul`
 
 const ArticlesWrapper = styled.div`
   display: flex;
+  margin-top: 60px;
+`;
 
-  margin-top: 40px;
+const LayingDogWrapper = styled.div`
+  position: absolute;
+  right: 22px;
+  bottom: -94px;
 `;
 
 const BlogPage = () => {
@@ -151,6 +160,9 @@ const BlogPage = () => {
         <ArticlesWrapper>
           <Articles></Articles>
         </ArticlesWrapper>
+        <LayingDogWrapper>
+          <LyingDogIcon />
+        </LayingDogWrapper>
       </ContentWrapper>
       <FooterComponent></FooterComponent>
     </MainTemplate>

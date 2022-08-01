@@ -172,11 +172,6 @@ const WlakingDogIconWrapper = styled.div`
   right: 22px;
   bottom: -61px;
   transform: scaleX(-1);
-
-  /* svg {
-    width: 72px;
-    height: 57px;
-  } */
 `;
 
 // markup

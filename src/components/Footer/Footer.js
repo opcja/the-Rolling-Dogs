@@ -98,7 +98,7 @@ export const FooterComponent = () => {
             <Link to="/blog">Blog</Link>
           </li>
           <li>
-            <Link>Oferta</Link>
+            <Link to="oferta">Oferta</Link>
           </li>
           <li>
             <Link>Kontakt</Link>

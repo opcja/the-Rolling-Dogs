@@ -205,7 +205,7 @@ export const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" activeClassName="active">
+            <Link to="/oferta" activeClassName="active">
               Oferta
             </Link>
           </li>

@@ -20,7 +20,7 @@ export const StyledButton = styled.button`
       case "secondary":
         return css`
           display: flex;
-          padding: 12px 24px 13px 0px;
+          padding: 12px 24px 13px;
           background-color: transparent;
           color: ${({ theme }) => theme.colors.orange500};
 

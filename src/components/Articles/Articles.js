@@ -82,6 +82,10 @@ const ArticleListItem = styled.li`
   &:nth-of-type(1) {
     margin-top: 0;
   }
+
+  a {
+    padding-left: 0;
+  }
 `;
 
 export const Articles = () => {

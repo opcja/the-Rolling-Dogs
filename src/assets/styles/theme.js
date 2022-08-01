@@ -40,7 +40,7 @@ export const theme = {
         h1: "71px",
         h2: "61px",
         h3: "39px",
-        h4: "25px",
+        h4: "29px",
         h5: "22px",
         body: "19px",
         bodySmall: "16px",
