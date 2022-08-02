@@ -67,7 +67,7 @@ const AboutSection = styled.section`
 
   p {
     text-align: center;
-    width: 78%;
+    width: 92%;
     margin-top: 60px;
   }
 

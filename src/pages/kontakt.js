@@ -85,9 +85,11 @@ const FormWrapper = styled.div`
 
     div:nth-last-of-type(1) {
       padding: 18px 0 18px 24px;
-      align-self: flex-start;
       width: 100%;
-      align-self: flex-start;
+
+      label {
+        align-self: flex-start;
+      }
 
       textarea {
         padding: 0;

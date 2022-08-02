@@ -82,7 +82,7 @@ const ContentWrapper = styled.section`
 const CategoriesWrapper = styled.ul`
   margin-top: 40px;
   display: flex;
-  column-gap: 10px;
+  column-gap: 12px;
   row-gap: 10px;
   flex-wrap: wrap;
   justify-content: center;

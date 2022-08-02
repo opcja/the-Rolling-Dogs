@@ -210,7 +210,7 @@ const OfferPage = () => {
           <span>Zainteresowany?</span>
           <span>Napisz do nas lub zadzwoń!</span>
         </h2>
-        <Button as="a" variant="secondary" text="Czytaj więcej"></Button>
+        <Button as="a" variant="secondary" text="Przejdź do kontaktu"></Button>
         <RotatingDogIcon />
         <StandingDogIcon />
       </ContactSection>
