@@ -2,15 +2,17 @@ import * as React from "react";
 import styled from "styled-components";
 import MainTemplate from "../templates/MainTemplates";
 import { Navigation } from "../components/Navigation/Navigation";
+import { Button } from "../components/Button/Button";
+import { FooterComponent } from "../components/Footer/Footer";
 
 import PersonIcon from "../assets/icons/person-icon.svg";
 import MailIcon from "../assets/icons/mail-icon.svg";
 import PhoneIcon from "../assets/icons/phone-icon.svg";
 import MessageIcon from "../assets/icons/message.svg";
-import { Button } from "../components/Button/Button";
-import { FooterComponent } from "../components/Footer/Footer";
+import PissingDogIcon from "../assets/icons/pissing-dog.svg";
 
 const ContactWrapper = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,6 +106,12 @@ const FormWrapper = styled.div`
   }
 `;
 
+const IconWrapper = styled.div`
+  position: absolute;
+  bottom: -65px;
+  left: 5%;
+`;
+
 const ContactPage = () => {
   return (
     <MainTemplate>
@@ -154,6 +162,9 @@ const ContactPage = () => {
             ></Button>
           </form>
         </FormWrapper>
+        <IconWrapper>
+          <PissingDogIcon />
+        </IconWrapper>
       </ContactWrapper>
       <FooterComponent></FooterComponent>
     </MainTemplate>

@@ -107,6 +107,7 @@ export const Articles = () => {
             }
             title
             tags
+            slug
           }
         }
       }
