@@ -98,10 +98,10 @@ export const FooterComponent = () => {
             <Link to="/blog">Blog</Link>
           </li>
           <li>
-            <Link to="oferta">Oferta</Link>
+            <Link to="/oferta">Oferta</Link>
           </li>
           <li>
-            <Link>Kontakt</Link>
+            <Link to="/kontakt">Kontakt</Link>
           </li>
           <li>
             <Link>Youtube</Link>

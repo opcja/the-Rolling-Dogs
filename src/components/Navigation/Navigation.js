@@ -237,7 +237,7 @@ export const Navigation = () => {
             </BlogCategoriesList>
           </li>
           <li>
-            <Link to="/" activeClassName="active">
+            <Link to="/kontakt" activeClassName="active">
               Kontakt
             </Link>
           </li>

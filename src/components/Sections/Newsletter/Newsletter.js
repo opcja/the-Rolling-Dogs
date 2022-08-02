@@ -104,8 +104,8 @@ export const NewsletterSectionComponent = ({ children }) => {
         nowych wpisach oraz promocjach na nasze szkolenia.
       </p>
       <FormWrapper>
-        <form name="Contact Form" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="Contact Form" />
+        <form name="Newsletter Form" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="Newsletter Form" />
           <div>
             <label>
               <PersonIcon />
