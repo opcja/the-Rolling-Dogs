@@ -1,12 +1,14 @@
+import slugify from "slugify";
 import * as React from "react";
 import styled from "styled-components";
 import MainTemplate from "../templates/MainTemplates";
 import { Navigation } from "../components/Navigation/Navigation";
 import { StaticImage } from "gatsby-plugin-image";
-
-import { Articles } from "../components/Articles/Articles";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { FooterComponent } from "../components/Footer/Footer";
+import { Button } from "../components/Button/Button";
 
 import LyingDogIcon from "../assets/icons/lying-dog2.svg";
 
@@ -95,6 +97,10 @@ const CategoriesWrapper = styled.ul`
     line-height: 160%;
     letter-spacing: 0.04em;
   }
+
+  a.active {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.black300};
+  }
 `;
 
 const ArticlesWrapper = styled.div`
@@ -108,7 +114,90 @@ const LayingDogWrapper = styled.div`
   bottom: -94px;
 `;
 
-const BlogTemplate = ({ data }) => {
+const DataAndTags = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  div {
+    display: flex;
+  }
+
+  a {
+    margin-right: 10px;
+  }
+
+  a:nth-last-of-type(1) {
+    margin-right: 0px;
+  }
+
+  a,
+  p {
+    font-family: "Lora", serif;
+    font-size: ${({ theme }) => theme.font.size.mobile.caption};
+    color: ${({ theme }) => theme.colors.black200};
+  }
+
+  a::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    margin-top: 2px;
+    background-color: ${({ theme }) => theme.colors.black200};
+  }
+`;
+
+const PostTitle = styled.h3`
+  font-family: "Playfair Display", serif;
+  font-size: ${({ theme }) => theme.font.size.mobile.h5};
+  margin-top: 20px;
+  color: ${({ theme }) => theme.colors.green300};
+  font-weight: 600;
+`;
+
+const DescriptionWrapper = styled.div`
+  margin-top: 40px;
+  margin-bottom: 20px;
+`;
+
+const ArticleListItem = styled.li`
+  margin-top: 80px;
+
+  &:nth-of-type(1) {
+    margin-top: 0;
+  }
+
+  a {
+    padding-left: 0;
+  }
+`;
+
+const BlogTemplate = (tagProp) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allContentfulBlogPost {
+          nodes {
+            miniaturPhoto {
+              gatsbyImageData(
+                aspectRatio: 1
+                formats: WEBP
+                placeholder: BLURRED
+              )
+            }
+            dataPublikacji
+            description {
+              raw
+            }
+            title
+            tags
+            slug
+          }
+        }
+      }
+    `
+  );
   return (
     <MainTemplate>
       <Navigation></Navigation>
@@ -129,24 +218,72 @@ const BlogTemplate = ({ data }) => {
         <span>
           Tu poczytasz o, szkoleniach, treningach i codziennym życiu z psem.
         </span>
-        <CategoriesWrapper>
-          {data.allContentfulBlogPost.nodes.map((item) => {
-            item.tags.map((tag) => {
-              if (!tagsList.includes(tag)) {
-                tagsList.push(tag);
-              }
-            });
-          })}
-          {tagsList.map((tag) => {
-            return (
-              <li>
-                <Link to="">#{tag.toLowerCase()}</Link>
-              </li>
-            );
-          })}
-        </CategoriesWrapper>
+        <nav>
+          {" "}
+          <CategoriesWrapper>
+            {data.allContentfulBlogPost.nodes.map((item) => {
+              item.tags.map((tag) => {
+                if (!tagsList.includes(tag)) {
+                  tagsList.push(tag);
+                }
+              });
+            })}
+            {tagsList.map((tag) => {
+              return (
+                <li>
+                  <Link
+                    to={`/blog/${slugify(tag, { lower: true })}`}
+                    activeClassName="active"
+                  >
+                    {tag}
+                  </Link>
+                </li>
+              );
+            })}
+          </CategoriesWrapper>
+        </nav>
+
         <ArticlesWrapper>
-          <Articles></Articles>
+          <ul>
+            {data.allContentfulBlogPost.nodes.map((item) => {
+              if (item.tags.includes(tagProp.pageContext.tag)) {
+                const MiniaturPhoto = getImage(item.miniaturPhoto);
+                return (
+                  <ArticleListItem key={item.title}>
+                    <article>
+                      <GatsbyImage image={MiniaturPhoto} alt="psi hotel" />
+                      <DataAndTags>
+                        {" "}
+                        <p>{item.dataPublikacji}</p>
+                        <div>
+                          {item.tags.map((tag) => {
+                            return (
+                              <Link
+                                to={`/blog/${slugify(tag, { lower: true })}`}
+                                key={tag}
+                              >
+                                {tag}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </DataAndTags>
+                      <PostTitle>{item.title}</PostTitle>
+                      <DescriptionWrapper>
+                        {renderRichText(item.description)}
+                      </DescriptionWrapper>
+                      <Button
+                        as="a"
+                        href="/"
+                        variant="secondary"
+                        text="Czytaj więcej"
+                      />
+                    </article>
+                  </ArticleListItem>
+                );
+              }
+            })}
+          </ul>
         </ArticlesWrapper>
         <LayingDogWrapper>
           <LyingDogIcon />

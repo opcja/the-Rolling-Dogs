@@ -4,6 +4,10 @@ import LogoHorizontal from "assets/icons/logo/logo-horizontal.svg";
 import YoutubeIcon from "assets/icons/youtube-icon.svg";
 import InstagramIcon from "assets/icons/instagram-icon.svg";
 import { Link } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
+import slugify from "slugify";
+
+const tagsList = [];
 
 const NavBarWrapper = styled.div`
   height: 50px;
@@ -168,6 +172,19 @@ const SocialIcon = styled.ul`
 `;
 
 export const Navigation = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allContentfulBlogPost {
+          nodes {
+            tags
+          }
+        }
+      }
+    `
+  );
+  // console.log(data.allContentfulBlogPost.nodes);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavigation = () => {
@@ -214,26 +231,25 @@ export const Navigation = () => {
               Blog
             </Link>
             <BlogCategoriesList>
-              <li>
-                <Link to="/" activeClassName="active">
-                  #szkolenia
-                </Link>
-              </li>
-              <li>
-                <Link to="/" activeClassName="active">
-                  #psie potrzeby
-                </Link>
-              </li>
-              <li>
-                <Link to="/" activeClassName="active">
-                  #trening
-                </Link>
-              </li>
-              <li>
-                <Link to="/" activeClassName="active">
-                  #psi hotel
-                </Link>
-              </li>
+              {data.allContentfulBlogPost.nodes.map((item) => {
+                item.tags.map((tag) => {
+                  if (!tagsList.includes(tag)) {
+                    tagsList.push(tag);
+                  }
+                });
+              })}
+              {tagsList.map((tag) => {
+                return (
+                  <li>
+                    <Link
+                      to={`/blog/${slugify(tag.slice(1), { lower: true })}`}
+                      activeClassName="active"
+                    >
+                      {tag}
+                    </Link>
+                  </li>
+                );
+              })}
             </BlogCategoriesList>
           </li>
           <li>

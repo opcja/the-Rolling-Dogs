@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import slugify from "slugify";
 import MainTemplate from "../templates/MainTemplates";
 import { Navigation } from "../components/Navigation/Navigation";
 import { StaticImage } from "gatsby-plugin-image";
@@ -95,6 +96,10 @@ const CategoriesWrapper = styled.ul`
     line-height: 160%;
     letter-spacing: 0.04em;
   }
+
+  a.active {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.black300};
+  }
 `;
 
 const ArticlesWrapper = styled.div`
@@ -136,27 +141,36 @@ const BlogPage = () => {
           <span>ale możesz nauczyć się myśleć jak pies.</span>
         </h1>
       </Header>
+
       <ContentWrapper>
         <h1>Blog</h1>
         <span>
           Tu poczytasz o, szkoleniach, treningach i codziennym życiu z psem.
         </span>
-        <CategoriesWrapper>
-          {data.allContentfulBlogPost.nodes.map((item) => {
-            item.tags.map((tag) => {
-              if (!tagsList.includes(tag)) {
-                tagsList.push(tag);
-              }
-            });
-          })}
-          {tagsList.map((tag) => {
-            return (
-              <li>
-                <Link to="">#{tag.toLowerCase()}</Link>
-              </li>
-            );
-          })}
-        </CategoriesWrapper>
+        <nav>
+          {" "}
+          <CategoriesWrapper>
+            {data.allContentfulBlogPost.nodes.map((item) => {
+              item.tags.map((tag) => {
+                if (!tagsList.includes(tag)) {
+                  tagsList.push(tag);
+                }
+              });
+            })}
+            {tagsList.map((tag) => {
+              return (
+                <li>
+                  <Link
+                    to={`/blog/${slugify(tag.slice(1), { lower: true })}`}
+                    activeClassName="active"
+                  >
+                    {tag}
+                  </Link>
+                </li>
+              );
+            })}
+          </CategoriesWrapper>
+        </nav>
         <ArticlesWrapper>
           <Articles></Articles>
         </ArticlesWrapper>

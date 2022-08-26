@@ -190,7 +190,12 @@ const IndexPage = () => {
             Pozwól psu być psem
             <p>Treningi i konsultacje behawioralne</p>
           </Title>
-          <Button as="a" href="/" variant="primary" text="Sprawdź ofertę" />
+          <Button
+            as="a"
+            href="/oferta"
+            variant="primary"
+            text="Sprawdź ofertę"
+          />
         </ContentWrapper>
       </Header>
       <AboutSection>
@@ -250,7 +255,12 @@ const IndexPage = () => {
             </p>
           </li>
         </ul>
-        <Button as="a" href="/" variant="primary" text="Przejdź do oferty" />
+        <Button
+          as="a"
+          href="/oferta"
+          variant="primary"
+          text="Przejdź do oferty"
+        />
       </OfferSection>
       <HotelSectionComponent></HotelSectionComponent>
       <NewsletterSectionComponent>

@@ -1,8 +1,9 @@
 import React from "react";
+import slugify from "slugify";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+// import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { Button } from "../Button/Button";
@@ -130,7 +131,10 @@ export const Articles = () => {
                   <div>
                     {item.tags.map((tag) => {
                       return (
-                        <Link to="/" key={tag}>
+                        <Link
+                          to={`/blog/${slugify(tag.slice(1), { lower: true })}`}
+                          key={tag}
+                        >
                           {tag}
                         </Link>
                       );
