@@ -239,8 +239,8 @@ export const NewsletterSectionComponent = ({ children }) => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
           "form-name": e.target.getAttribute("name"),
-          inputNameValue,
-          inputEmailValue,
+          name: inputNameValue,
+          email: inputEmailValue,
         }),
       })
         .then(() => {
@@ -278,7 +278,6 @@ export const NewsletterSectionComponent = ({ children }) => {
         <form
           name="Newsletter Form"
           method="POST"
-          action=""
           data-netlify="true"
           onSubmit={handleSumbit}
         >
