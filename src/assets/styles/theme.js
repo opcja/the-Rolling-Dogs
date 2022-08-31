@@ -1,5 +1,7 @@
 export const theme = {
   colors: {
+    success: "#168039",
+    error: "#CC4144",
     yellow100: "#F5F2E2",
     yellow200: "#F2EDD8",
     yellow300: "#EFE9CE",
