@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { Button } from "../../Button/Button";
@@ -7,6 +7,9 @@ import PersonIcon from "../../../assets/icons/person-icon.svg";
 import MailIcon from "../../../assets/icons/mail-icon.svg";
 import SuccessIcon from "../../../assets/icons/success-icon.svg";
 import ErrorIcon from "../../../assets/icons/error-icon.svg";
+
+const [inputNameValue, setInputNameValue] = useState();
+const [inputEmailValue, setInputEmailValue] = useState();
 
 let isNameCorrect = false;
 let isEmailCorrect = false;
@@ -166,6 +169,8 @@ const FormWrapper = styled.div`
 const handleChange = (e) => {
   switch (e.target.name) {
     case "name":
+      setInputNameValue(e.target.value);
+
       if (e.target.value.length > 2) {
         isNameCorrect = true;
         e.target.parentElement.classList.add("correct-validation");
@@ -176,6 +181,8 @@ const handleChange = (e) => {
       }
       break;
     case "email":
+      setInputEmailValue(e.target.value);
+
       if (
         e.target.value.includes("@") &&
         e.target.value.includes(".") &&
@@ -229,7 +236,8 @@ const handleSumbit = (e, data) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": e.target.getAttribute("name"),
-        ...data,
+        inputNameValue,
+        inputEmailValue,
       }),
     })
       .then(() => {
