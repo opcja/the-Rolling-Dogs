@@ -8,9 +8,6 @@ import MailIcon from "../../../assets/icons/mail-icon.svg";
 import SuccessIcon from "../../../assets/icons/success-icon.svg";
 import ErrorIcon from "../../../assets/icons/error-icon.svg";
 
-const [inputNameValue, setInputNameValue] = useState();
-const [inputEmailValue, setInputEmailValue] = useState();
-
 let isNameCorrect = false;
 let isEmailCorrect = false;
 
@@ -166,94 +163,101 @@ const FormWrapper = styled.div`
   }
 `;
 
-const handleChange = (e) => {
-  switch (e.target.name) {
-    case "name":
-      setInputNameValue(e.target.value);
+export const NewsletterSectionComponent = ({ children }) => {
+  const [inputNameValue, setInputNameValue] = useState("");
+  const [inputEmailValue, setInputEmailValue] = useState("");
 
-      if (e.target.value.length > 2) {
-        isNameCorrect = true;
-        e.target.parentElement.classList.add("correct-validation");
-        e.target.parentElement.classList.remove("incorrect-validation");
-      } else {
-        isNameCorrect = false;
-        e.target.parentElement.classList.remove("correct-validation");
-      }
-      break;
-    case "email":
-      setInputEmailValue(e.target.value);
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "name":
+        setInputNameValue(e.target.value);
 
-      if (
-        e.target.value.includes("@") &&
-        e.target.value.includes(".") &&
-        e.target.value.length > 6
-      ) {
-        isEmailCorrect = true;
-        e.target.parentElement.classList.add("correct-validation");
-        e.target.parentElement.classList.remove("incorrect-validation");
-      } else {
-        isEmailCorrect = false;
-        e.target.parentElement.classList.remove("correct-validation");
-      }
-      break;
-  }
-};
+        if (e.target.value.length > 2) {
+          isNameCorrect = true;
+          e.target.parentElement.classList.add("correct-validation");
+          e.target.parentElement.classList.remove("incorrect-validation");
+        } else {
+          isNameCorrect = false;
+          e.target.parentElement.classList.remove("correct-validation");
+        }
+        break;
+      case "email":
+        setInputEmailValue(e.target.value);
 
-const handleBlur = (e) => {
-  switch (e.target.name) {
-    case "name":
-      if (e.target.value.length < 3) {
-        isNameCorrect = false;
-        e.target.parentElement.classList.add("incorrect-validation");
-      }
-      break;
-    case "email":
-      if (
-        !(
+        if (
           e.target.value.includes("@") &&
           e.target.value.includes(".") &&
           e.target.value.length > 6
-        )
-      ) {
-        isEmailCorrect = false;
-        e.target.parentElement.classList.add("incorrect-validation");
-      }
-      break;
+        ) {
+          isEmailCorrect = true;
+          e.target.parentElement.classList.add("correct-validation");
+          e.target.parentElement.classList.remove("incorrect-validation");
+        } else {
+          isEmailCorrect = false;
+          e.target.parentElement.classList.remove("correct-validation");
+        }
+        break;
+    }
+  };
+
+  const handleBlur = (e) => {
+    switch (e.target.name) {
+      case "name":
+        if (e.target.value.length < 3) {
+          isNameCorrect = false;
+          e.target.parentElement.classList.add("incorrect-validation");
+        }
+        break;
+      case "email":
+        if (
+          !(
+            e.target.value.includes("@") &&
+            e.target.value.includes(".") &&
+            e.target.value.length > 6
+          )
+        ) {
+          isEmailCorrect = false;
+          e.target.parentElement.classList.add("incorrect-validation");
+        }
+        break;
+    }
+  };
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
   }
-};
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
-
-const handleSumbit = (e, data) => {
-  e.preventDefault();
-  if (isEmailCorrect && isNameCorrect) {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": e.target.getAttribute("name"),
-        inputNameValue,
-        inputEmailValue,
-      }),
-    })
-      .then(() => {
-        document
-          .querySelector("form>button")
-          .classList.remove("form-is-incorrect");
-        document.querySelector("form>button").classList.add("form-is-correct");
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    if (isEmailCorrect && isNameCorrect) {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": e.target.getAttribute("name"),
+          inputNameValue,
+          inputEmailValue,
+        }),
       })
-      .catch((error) => alert(error));
-  } else {
-    document.querySelector("form>button").classList.remove("form-is-correct");
-    document.querySelector("form>button").classList.add("form-is-incorrect");
-  }
-};
+        .then(() => {
+          document
+            .querySelector("form>button")
+            .classList.remove("form-is-incorrect");
+          document
+            .querySelector("form>button")
+            .classList.add("form-is-correct");
+        })
+        .catch((error) => alert(error));
+    } else {
+      document.querySelector("form>button").classList.remove("form-is-correct");
+      document.querySelector("form>button").classList.add("form-is-incorrect");
+    }
+  };
 
-export const NewsletterSectionComponent = ({ children }) => {
   return (
     <NewsletterSection>
       <StaticImage
